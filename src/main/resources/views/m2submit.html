@@ -1,0 +1,72 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>denfinder</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/js/jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" href="/js/jquery-ui/jquery-ui.structure.css">
+    <link rel="stylesheet" href="/js/jquery-ui/jquery-ui.theme.css">
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="promo">
+      <div class="promo-mask">
+        
+        <nav class="navbar navbar-default navbar-static-top navbar-home" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="./">
+                <img class="logo-svg" src="/images/icon_23241.svg">
+                <h3 class="logo-text">HiveSearch</h3>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="housing-form-container container-fluid">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <h1 class="text-center">
+            Scores
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div id="data">
+    	<div th:each="ldw : ${locationDataWrappers}">
+    		<h2 th:text="${ldw.location + ': ' + ldw.score}">Lat, Lon</h2>
+    		<div>
+    		<h3 th:text="${ldw.score}">Score:</h3>
+    		<p th:text="${ldw}">[ldw as string]</p>
+    		</div>
+    	</div>
+    </div>
+	
+    <!-- build:js scripts/main.js -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/jquery-ui/jquery-ui.js"></script>
+    <!-- endbuild -->
+    <script>
+    $("#data").accordion({
+			header: "div h2",
+			collapsible: true,
+			active: false,
+			heightStyle: "content"
+	});
+    </script>
+</body>
+</html>

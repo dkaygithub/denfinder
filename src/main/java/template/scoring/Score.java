@@ -34,13 +34,12 @@ public class Score {
 		
 		try {
 			//transit score
-			transitScore =  (1 - Math.abs(ideal.getTransitScore() - current.getTransitScore())/ideal.getTransitScore())
-					* this.transitWeight;
+			transitScore =  current.getTransitScore() * 0.01 * this.transitWeight;
 			transitScore = transitScore > 0 ? transitScore: 0.0;
 		
 			//school score
-			if (current.getSchools().size() >= 2) {
-				schoolScore = (current.getSchools().get(0).getQuality() * .7 + current.getSchools().get(1).getQuality() * .3)
+			if (current.getSchools().size() >= 2 && current.getSchools().get(0) != null && current.getSchools().get(1) != null) {
+				schoolScore = (current.getSchools().get(0).getQuality() * .07 + current.getSchools().get(1).getQuality() * .03)
 						* this.schoolWeight;
 			}
 			
@@ -80,13 +79,14 @@ public class Score {
 		return locationScore;
 	}
 	public Double getTotalScore(){
-		Double sum = 0.0;
-		sum += transitScore;
-		sum += schoolScore;
-		sum += incomeScore;
-		sum += ageScore;
-		sum += locationScore;
-		return sum;
+//		Double sum = 0.0;
+		return incomeScore;
+//		sum += transitScore;
+//		sum += schoolScore;
+//		sum += incomeScore;
+//		sum += ageScore;
+//		sum += locationScore;
+//		return sum;
 	}
 	
 	public String toString(){
